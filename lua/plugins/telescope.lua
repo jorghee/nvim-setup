@@ -4,8 +4,10 @@ return {
     tag = '0.1.5',
     dependencies = { 'nvim-lua/plenary.nvim' },
     keys = {
-      -- add a keymap to browse files
-      { "<C-p>", "<cmd>Telescope find_files<cr>", desc = "Find Files" },
+      { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find Files" },
+      { "<leader>fg", "<cmd>Telescope live_grep<cr>", desc = "Live Grep (Search Text)" },
+      { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Find Buffers" },
+      { "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Find Help Tags" },
     },
   }
 }
