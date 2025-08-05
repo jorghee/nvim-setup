@@ -5,20 +5,18 @@ gestor de plugins. Vamos a detallar la estructura anterior y nueva, los
 prerrequisitos, y las instrucciones paso a paso para instalar y 
 ejecutar Neovim sin errores.
 
----
-
 ## 1. Contexto de la Migración
 
 Anteriormente, esta configuración utilizaba el gestor de plugins 
 [Packer.nvim](https://github.com/wbthomason/packer.nvim). La 
-estructura fue inspirada en un video de **Charlie L**, un canal de 
-YouTube:
+estructura fue hecha siguiendo un video de **Charlie L** en su canal 
+de YouTube:
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Y2iqRZ4EYbk?si=Fz50vbZtNrxfuDZd" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+[![Watch the video](https://img.youtube.com/vi/Y2iqRZ4EYbk/0.jpg)](https://www.youtube.com/watch?v=Y2iqRZ4EYbk)
 
 ### Estructura anterior (basada en Packer)
 
-```bash
+```zsh
 .
 ├── after
 │   └── plugin
@@ -42,12 +40,10 @@ La nueva versión reemplaza esta estructura con un enfoque modular y
 mantenido por el ecosistema de 
 [Lazy.nvim](https://lazy.folke.io/installation)
 
----
-
 ## 2. Instalación y Prerrequisitos
 
-Vamos a cubrir cómo evitar errores comunes como los relacionados 
-con `tree-sitter`, `node`, o `ripgrep`.
+En esta sección vamos a cubrir cómo evitar errores comunes como los 
+relacionados con `tree-sitter`, `node`, o `ripgrep`.
 
 ### Requisitos del sistema
 
@@ -70,10 +66,10 @@ Asegúrate de tener las siguientes herramientas instaladas:
 
 #### Instalar Volta + Node.js
 
-```bash
+```zsh
 # Volta install
 curl https://get.volta.sh | bash
-source ~/.bashrc  # o ~/.zshrc dependiendo de tu shell
+source ~/.zshrc  # o ~/.bashrc
 
 # Install Node.js
 volta install node
@@ -82,20 +78,20 @@ volta install pnpm
 
 #### Instalar tree-sitter CLI
 
-```bash
+```zsh
 cargo install tree-sitter-cli
 ```
 
 ---
 
-## 2. Estructura de Archivos con Lazy.nvim
+## 3. Estructura de Archivos con Lazy.nvim
 
 La nueva estructura es modular, clara y está basada en las 
 recomendaciones oficiales de [Lazy.nvim](https://lazyvim.org/).
 
 ### Estructura de directorios con Lazy.nvim
 
-```bash
+```zsh
 .
 ├── init.lua
 ├── lazy-lock.json
