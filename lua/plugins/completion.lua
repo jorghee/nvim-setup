@@ -29,6 +29,7 @@ return {
         lsp_zero.default_keymaps({ buffer = bufnr })
 
         local opts = { buffer = bufnr, remap = false }
+        vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts) --jumps to the definition
         vim.keymap.set("n", "gh", vim.lsp.buf.hover, opts) --show information in a floating window
         vim.keymap.set("n", "<leader>vws", vim.lsp.buf.workspace_symbol, opts)
         vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float, opts) --show diagnostics in a floating window
