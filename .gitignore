@@ -1,0 +1,13 @@
+# Plugin manager's file
+lazy-lock.json
+
+# Neovim's files
+*.swp
+*.swo
+*.bak
+*.tmp
+*.undo
+*.shada
+
+# Temporal files of LSP, trees, etc
+lua-language-server.log
