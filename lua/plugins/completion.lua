@@ -62,7 +62,7 @@ return {
         error = '✘',
         warn = '▲',
         hint = '⚑',
-        info = '»',
+        info = '',
       })
 
       -- Autocompletion config
@@ -91,11 +91,11 @@ return {
           fields = { 'menu', 'abbr', 'kind' },
           format = function(entry, item)
             local menu_icon = {
-              nvim_lsp = 'λ',
-              luasnip = '⋗',
-              buffer = 'Ω',
-              path = '󰴠 ',
-              nvim_lua = 'Π',
+              nvim_lsp = '',
+              luasnip = '',
+              buffer = '',
+              path = '',
+              nvim_lua = '',
             }
             item.menu = menu_icon[entry.source.name]
             return item
