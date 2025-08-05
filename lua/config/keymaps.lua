@@ -8,7 +8,7 @@ vim.keymap.set("n", "<C-h>", ":wincmd h<CR>", opts)
 vim.keymap.set("n", "<C-l>", ":wincmd l<CR>", opts)
 
 -- Clear search highlight
-vim.keymap.set("n", "<esc>", ":noh<return><esc>", opts)
+vim.keymap.set("n", "<esc>", "<cmd>noh<CR>", opts)
 
 -- scroll fast
 vim.keymap.set("n", "<C-j>", "10<C-e>", opts)
