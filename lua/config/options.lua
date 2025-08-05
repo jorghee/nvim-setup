@@ -1,11 +1,11 @@
 -- general
-vim.opt.backup = false
-vim.opt.errorbells = true
-vim.opt.swapfile = false
-vim.opt.mouse = "" -- Disable mouse usage
-vim.opt.clipboard = "unnamedplus" -- Use the system clipboard
-vim.opt.showcmd = true -- Show incomplete commands
-vim.opt.encoding = "utf-8" -- Set the character encoding to UTF-8
+vim.o.backup = false
+vim.o.errorbells = true
+vim.o.swapfile = false
+vim.o.mouse = "" -- Disable mouse usage
+vim.o.clipboard = "unnamedplus" -- Use the system clipboard
+vim.o.showcmd = true -- Show incomplete commands
+vim.o.encoding = "utf-8" -- Set the character encoding to UTF-8
 vim.o.guicursor = "a:blinkon100" -- cursor blinking
 
 -- numbers
