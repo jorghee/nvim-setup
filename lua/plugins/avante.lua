@@ -13,9 +13,28 @@ return {
     -- this file can contain specific instructions for your project
     instructions_file = "avante.md",
     -- for example
-    provider = "copilot",
+    provider = "claude",
+    providers = {
+      claude = {
+        endpoint = "https://api.anthropic.com",
+        model = "claude-opus-4-6",
+        auth_type = "max",
+        timeout = 30000, -- Timeout in milliseconds
+          extra_request_body = {
+            temperature = 0.75,
+            max_tokens = 20480,
+          },
+      },
+    },
+    input = {
+      provider = "snacks",
+      provider_opts = {
+        -- Additional snacks.input options
+        title = "Avante Input",
+        icon = " ",
+      },
+    },
   },
-
   dependencies = {
     "nvim-lua/plenary.nvim",
     "MunifTanjim/nui.nvim",
