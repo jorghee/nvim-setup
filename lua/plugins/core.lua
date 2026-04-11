@@ -1,17 +1,20 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
+    branch = "main",
     build = ":TSUpdate",
     config = function()
-      require("nvim-treesitter.configs").setup({
-        ensure_installed = { "c", "lua", "vim", "cpp", "javascript", "java", "css", "html", "markdown", "latex", "python" },
-        sync_install = false,
-        auto_install = true,
+      local ts = require("nvim-treesitter")
+      ts.setup({
         highlight = {
           enable = true,
           additional_vim_regex_highlighting = false,
           -- disable = { "html", "latex" },
         },
+      })
+
+      ts.install({
+        "c", "lua", "vim", "cpp", "javascript", "java", "css", "html", "markdown", "latex", "python"
       })
     end,
   }
