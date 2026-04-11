@@ -108,6 +108,19 @@ volta install pnpm
 cargo install tree-sitter-cli
 ```
 
+> [!CAUTION]
+> El proyecto ha tenido problemas de compatibilidad con la nueva versión
+> de Neovim v0.12.1. Ahora, se recomienda instalar el paquete de
+> `tree-sitter-cli` desde los repositorios oficiales de Linux.
+> ```zsh
+> sudo pacman -S tree-sitter-cli
+> ```
+> 
+> Además, se necesita especificar la rama `main` en las configuraciones
+> debido a que la rama `master` ahora es incompatible con  modernas versiones
+> de Neovim. Por último, se necesita actualizar las opciones de configuración.
+> See new config here: [./lua/plugins/core.lua](./lua/plugins/core.lua)
+
 ---
 
 ## 3. Intelligent Neovim
