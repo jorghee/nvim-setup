@@ -14,7 +14,8 @@ return {
       })
 
       ts.install({
-        "c", "lua", "vim", "cpp", "javascript", "java", "css", "html", "markdown", "latex", "python"
+        "c", "lua", "vim", "cpp", "javascript", "java", "css",
+        "html", "markdown", "latex", "python", "dockerfile"
       })
     end,
   }
