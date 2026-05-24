@@ -12,20 +12,16 @@ return {
     -- add any opts here
     -- this file can contain specific instructions for your project
     instructions_file = "avante.md",
-    -- for example
-    provider = "claude",
+
+    provider = "copilot",
+    auto_suggestions_provider = "copilot",
+
     providers = {
-      claude = {
-        endpoint = "https://api.anthropic.com",
-        model = "claude-opus-4-6",
-        auth_type = "max",
-        timeout = 30000, -- Timeout in milliseconds
-          extra_request_body = {
-            temperature = 0.75,
-            max_tokens = 20480,
-          },
+      copilot = {
+        model = "claude-sonnet-4",
       },
     },
+
     input = {
       provider = "snacks",
       provider_opts = {
@@ -40,11 +36,11 @@ return {
     "MunifTanjim/nui.nvim",
     --- The below dependencies are optional,
     "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
-    "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
-    "stevearc/dressing.nvim", -- for input provider dressing
-    "folke/snacks.nvim", -- for input provider snacks
-    "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
-    "zbirenbaum/copilot.lua", -- for providers='copilot'
+    "hrsh7th/nvim-cmp",              -- autocompletion for avante commands and mentions
+    "stevearc/dressing.nvim",        -- for input provider dressing
+    "folke/snacks.nvim",             -- for input provider snacks
+    "nvim-tree/nvim-web-devicons",   -- or echasnovski/mini.icons
+    "zbirenbaum/copilot.lua",        -- for providers='copilot'
     {
       -- support for image pasting
       "HakonHarnes/img-clip.nvim",
