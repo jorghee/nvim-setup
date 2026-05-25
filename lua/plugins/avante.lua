@@ -18,7 +18,7 @@ return {
 
     providers = {
       copilot = {
-        model = "claude-sonnet-4",
+        model = "gemini-2.5-pro",
       },
     },
 
