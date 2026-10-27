@@ -13,7 +13,7 @@ return {
     -- To use it, comment out the "nordic.nvim" block above and uncomment this one.
     -- Then change the `vim.cmd.colorscheme` line below.
     "catppuccin/nvim",
-    as = "catppuccin",
+    name = "catppuccin",
     lazy = false,
     priority = 1000,
     enabled = false, -- Set to true to use this theme

@@ -5,18 +5,21 @@ return {
     build = ":TSUpdate",
     config = function()
       local ts = require("nvim-treesitter")
-      ts.setup({
-        highlight = {
-          enable = true,
-          additional_vim_regex_highlighting = false,
-          -- disable = { "html", "latex" },
-        },
-      })
+      ts.setup({})
 
-      ts.install({
-        "c", "lua", "vim", "cpp", "javascript", "java", "css",
-        "html", "markdown", "latex", "python", "dockerfile"
-      })
+      -- Install parsers only if not already installed
+      local parsers = {
+        "c", "lua", "vim", "vimdoc", "cpp", "javascript", "java", "css",
+        "html", "markdown", "latex", "python", "dockerfile",
+      }
+      local installed = ts.get_installed()
+      local to_install = vim.tbl_filter(function(p)
+        return not vim.list_contains(installed, p)
+      end, parsers)
+
+      if #to_install > 0 then
+        ts.install(to_install)
+      end
     end,
-  }
+  },
 }
