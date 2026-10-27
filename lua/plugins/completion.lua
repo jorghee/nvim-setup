@@ -21,24 +21,21 @@ return {
       { 'rafamadriz/friendly-snippets' },
     },
     config = function()
-
       local lsp_zero = require('lsp-zero')
       lsp_zero.on_attach(function(client, bufnr)
-        -- see :help lsp-zero-keybindings
-        -- to learn the available actions
-        lsp_zero.default_keymaps({ buffer = bufnr })
+        local opts = { buffer = bufnr }
 
-        local opts = { buffer = bufnr, remap = false }
-        vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts) --jumps to the definition
-        vim.keymap.set("n", "gh", vim.lsp.buf.hover, opts) --show information in a floating window
-        vim.keymap.set("n", "<leader>vws", vim.lsp.buf.workspace_symbol, opts)
-        vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float, opts) --show diagnostics in a floating window
-        vim.keymap.set("n", "<leader>n", vim.diagnostic.goto_next, opts) --move to the next diagnostic
-        vim.keymap.set("n", "<leader>m", vim.diagnostic.goto_prev, opts) --move to the previous diagnostic
-        vim.keymap.set("n", "<leader>vrc", vim.lsp.buf.code_action, opts) --select an action available from lsp
-        vim.keymap.set("n", "<leader>vrr", vim.lsp.buf.references, opts) --Lists the references in the quickfix window
-        vim.keymap.set("n", "<leader>vrn", vim.lsp.buf.rename, opts) --rename all references
-        vim.keymap.set("n", "<leader>sh", vim.lsp.buf.signature_help, opts) --show documentation in a floating window
+        -- LSP Keymaps
+        vim.keymap.set("n", "gd", vim.lsp.buf.definition, vim.tbl_extend("force", opts, { desc = "LSP: Go to definition" }))
+        vim.keymap.set("n", "K", vim.lsp.buf.hover, vim.tbl_extend("force", opts, { desc = "LSP: Hover documentation" }))
+        vim.keymap.set("n", "<leader>k", vim.lsp.buf.signature_help, vim.tbl_extend("force", opts, { desc = "LSP: Signature help" }))
+        vim.keymap.set("n", "<leader>vws", vim.lsp.buf.workspace_symbol, vim.tbl_extend("force", opts, { desc = "LSP: Workspace symbol" }))
+        vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float, vim.tbl_extend("force", opts, { desc = "Diagnostics: Open float" }))
+        vim.keymap.set("n", "<leader>n", function() vim.diagnostic.jump({ count = 1, float = true }) end, vim.tbl_extend("force", opts, { desc = "Diagnostics: Next" }))
+        vim.keymap.set("n", "<leader>m", function() vim.diagnostic.jump({ count = -1, float = true }) end, vim.tbl_extend("force", opts, { desc = "Diagnostics: Previous" }))
+        vim.keymap.set("n", "<leader>vrc", vim.lsp.buf.code_action, vim.tbl_extend("force", opts, { desc = "LSP: Code action" }))
+        vim.keymap.set("n", "<leader>vrr", vim.lsp.buf.references, vim.tbl_extend("force", opts, { desc = "LSP: References" }))
+        vim.keymap.set("n", "<leader>vrn", vim.lsp.buf.rename, vim.tbl_extend("force", opts, { desc = "LSP: Rename symbol" }))
       end)
 
       require('mason').setup({})
@@ -52,17 +49,31 @@ return {
           'eslint',
           'ltex',
           'pylsp',
+          'tinymist',
         },
         handlers = {
           lsp_zero.default_setup,
         },
       })
 
-      lsp_zero.set_sign_icons({
-        error = '✘',
-        warn = '▲',
-        hint = '⚑',
-        info = '',
+      -- Diagnostic config
+      vim.diagnostic.config({
+        virtual_text = false,
+        severity_sort = true,
+        underline = true,
+        update_in_insert = false,
+        signs = {
+          text = {
+            [vim.diagnostic.severity.ERROR] = "✘",
+            [vim.diagnostic.severity.WARN] = "▲",
+            [vim.diagnostic.severity.HINT] = "⚑",
+            [vim.diagnostic.severity.INFO] = "",
+          },
+        },
+        float = {
+          source = "always",
+          border = "rounded",
+        },
       })
 
       -- Autocompletion config
@@ -100,17 +111,6 @@ return {
             item.menu = menu_icon[entry.source.name]
             return item
           end,
-        }
-      })
-
-      -- Diagnostic config
-      vim.diagnostic.config({
-        virtual_text = false,
-        severity_sort = false,
-        underline = true,
-        update_in_insert = false,
-        float = {
-          source = "always",
         }
       })
     end,
